@@ -27,6 +27,7 @@ func WriteData(r *bytes.Reader, c *model.CmdLineOpts, b []byte) {
 	r.Read(buff)
 	w.Write(buff)
 	w.Write(b)
+
 	if c.Decode {
 		r.Seek(int64(len(b)), 1)
 	}
