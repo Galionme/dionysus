@@ -34,7 +34,6 @@ type MetaChunk struct {
 	Offset int64
 }
 
-// ProcessImage is the wrapper to parse PNG bytes
 func (mc *MetaChunk) ProcessImage(b *bytes.Reader, c *model.CmdLineOpts) {
 	mc.validate(b)
 	if (c.Offset != "") && (c.Encode == false && c.Decode == false) {
@@ -76,7 +75,7 @@ func (mc *MetaChunk) ProcessImage(b *bytes.Reader, c *model.CmdLineOpts) {
 		util.WriteData(b, c, bmb)
 	}
 	if c.Meta {
-		count := 1 //Start at 1 because 0 is reserved for magic byte
+		count := 1
 		var chunkType string
 		for chunkType != endChunkType {
 			mc.getOffset(b)
